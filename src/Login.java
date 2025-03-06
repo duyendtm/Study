@@ -32,7 +32,7 @@ public class Login {
         Loginbtn.click();
 
         Thread.sleep(5000);
-        WebElement message1=driver.findElement(By.id("dialogContent_newDialog"));
+        WebElement message1 = driver.findElement(By.id("dialogContent_newDialog"));
         WebElement buttonGotIt1 = driver.findElement(By.xpath("//*[@id='newDialog']/md-dialog-actions/button"));
         System.out.println(message1.getText());
         buttonGotIt1.click();
@@ -52,14 +52,14 @@ public class Login {
         Loginbtn1.click();
 
         Thread.sleep(5000);
-        WebElement message2=driver.findElement(By.id("dialogContent_newDialog"));
+        WebElement message2 = driver.findElement(By.id("dialogContent_newDialog"));
         WebElement buttonGotIt2 = driver.findElement(By.xpath("//*[@id='newDialog']/md-dialog-actions/button"));
         System.out.println(message2.getText());
         buttonGotIt2.click();
 
 
         // Nhập correct username và password
-        WebElement username= driver.findElement(By.id("inp-account"));
+        WebElement username = driver.findElement(By.id("inp-account"));
         Thread.sleep(5000);
         username.clear();
         username.sendKeys("duyendm@doctella.com");
@@ -67,16 +67,47 @@ public class Login {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 
-       WebElement password1 = driver.findElement(By.id("inp-pass-email"));
+        WebElement password1 = driver.findElement(By.id("inp-pass-email"));
         Thread.sleep(5000);
-       password1.clear();
-        password.sendKeys("Doctella@2020");
+        password1.clear();
+        password1.sendKeys("Doctella@2020");
 
         //Click Login btn
-       WebElement Loginbtn2 = driver.findElement(By.id("click-login"));
+        WebElement Loginbtn2 = driver.findElement(By.id("click-login"));
         Loginbtn2.click();
-
-
-
     }
+    @Test (groups = "ActionCP")
+        public void ActionCP() throws InterruptedException
+        {
+            WebDriver driver = new ChromeDriver();
+            driver.get("https://www.masimosafetynetdev.com/remote-monitoring");
+            WebElement BoxReqLogin = driver.findElement(By.id("box-req-login"));
+            BoxReqLogin.click();
+            WebElement username = driver.findElement(By.id("inp-account"));
+            Thread.sleep(5000);
+            username.clear();
+            username.sendKeys("duyendm@doctella.com");
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+
+            WebElement password = driver.findElement(By.id("inp-pass-email"));
+            Thread.sleep(5000);
+            password.clear();
+            password.sendKeys("Doctella@2020");
+
+            //Click Login btn
+            WebElement Loginbtn2 = driver.findElement(By.id("click-login"));
+            Loginbtn2.click();
+
+            //Click Invite patient button
+            Thread.sleep(5000);
+            WebElement InvitePatientbtn = driver.findElement(By.xpath("//*[@id=\"tut-step-share-0\"]/span/span[1]"));
+            InvitePatientbtn.click();
+
+            //Input last name, first name, email then click Send
+        }
+
+
+
 }
